@@ -28,3 +28,5 @@ spec = do
         it "can be used in list comprehensions" $ do
             pending
             {- calcBmis [(85, 1.90)] `shouldBe` [23.545706371191137] -}
+
+-- Continue to Katas.Flow.LetItBeSpec

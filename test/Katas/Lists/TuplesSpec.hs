@@ -20,3 +20,5 @@ spec = do
         it "can calculate right triangle that has the perimeter of 24" $ do
             let triangles = [(a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2+b^2==c^2, a+b+c==24]
             triangles `shouldBe` [(6,8,10)]
+
+-- Continue to Katas.Types.IntroSpec

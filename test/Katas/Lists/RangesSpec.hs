@@ -23,3 +23,5 @@ spec = do
         it "can remove non-uppercase letters" $ do
             let removeNonUppercase st = [x | x <- st, x `elem` ['A'..'Z']]
             removeNonUppercase "IdontLIKEFROGS" `shouldBe` "ILIKEFROGS"
+
+-- Continue to Katas.Lists.TuplesSpec

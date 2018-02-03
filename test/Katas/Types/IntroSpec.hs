@@ -49,3 +49,5 @@ spec = do
         it "can add Int and Floating point numbers" $ do
             {- from... function -}
             fromIntegral (length [1,2,3,4]) + 3.2 `shouldBe` 7.2
+
+-- Continue to Katas.Flow.PatternMatchingSpec

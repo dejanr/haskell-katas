@@ -38,3 +38,5 @@ spec = do
         it "can compare two values" $ do
             compare' 2 2 `shouldBe` EQ
             2 `compare'` 3 `shouldBe` LT
+
+-- Continue to Katas.Flow.WhereSpec

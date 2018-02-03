@@ -35,3 +35,5 @@ spec = do
         it "can drop while" $ do
             dropWhile (<5) [1..10] `shouldBe` [5,6,7,8,9,10]
             dropWhile (=='a') "abracadabra" `shouldBe` "bracadabra"
+
+-- Continue to Katas.Lists.ComprehensionsSpec

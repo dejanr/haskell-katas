@@ -24,3 +24,5 @@ spec = do
         it "can be generalized into a function" $ do
             let f xs = [x | x <- xs, x `elem` ['A'..'Z']]
             f "Apple Brick Cat" `shouldBe` "ABC"
+
+-- Continue to Katas.Lists.RangesSpec

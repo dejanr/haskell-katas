@@ -80,3 +80,5 @@ spec = do
         it "can hold the original item with pattern" $ do
             firstLetter "" `shouldBe` "Empty string, whoops!"
             firstLetter "Dracula" `shouldBe` "The first letter of Dracula is D"
+
+-- Continue to Katas.Flow.GuardsSpec
