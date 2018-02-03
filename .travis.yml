@@ -1,0 +1,19 @@
+sudo: false
+language: c
+
+before_install:
+# stack
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+- stack --no-terminal setup
+
+script:
+- mkdir -p to-travis
+- stack --no-terminal build --copy-bins --local-bin-path to-travis
+- stack --no-terminal test
+- bzip2 to-travis/all-cabal-hashes-tool
+
+cache:
+  directories:
+  - $HOME/.stack
