@@ -3,6 +3,9 @@ module Katas.Types.DerivedInstancesSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 {-
    Create a Person record with 3 fields
    * firstName
@@ -10,39 +13,43 @@ import Test.QuickCheck
    * age
 -}
 
-{- mikeD Michael Diamong 43 -}
-{- mikeD :: Person -}
+data Person = Person { firstName :: String
+                     , lastName :: String
+                     , age :: Int } deriving (Show, Eq, Read)
 
-{- adRock Adam Horobitz 41 -}
-{- adRock :: Person -}
+{- mikeD Michael Diamond 43 -}
+mikeD :: Person
+mikeD = Person "Michael" "Diamond" 43
+
+{- adRock Adam Horovitz 41 -}
+adRock :: Person
+adRock = Person "Adam" "Horovitz" 41
 
 {- mca Adam Yauch 44 -}
-{- mca :: Person -}
+mca :: Person
+mca = Person "Adam" "Yauch" 44
 
 spec :: Spec
 spec = do
     describe "Person" $ do
         it "can compare two fields" $ do
-            pending
-            {- mca == adRock `shouldBe` False -}
-            {- mikeD == adRock `shouldBe` False -}
-            {- mikeD /= adRock `shouldBe` True -}
-            {- mikeD == mikeD `shouldBe` True -}
-            {- mikeD == Person {firstName="Michael",lastName="Diamond",age=43} -}
-                {- `shouldBe` True -}
+            mca == adRock `shouldBe` False
+            mikeD == adRock `shouldBe` False
+            mikeD /= adRock `shouldBe` True
+            mikeD == mikeD `shouldBe` True
+            mikeD == Person {firstName="Michael",lastName="Diamond",age=43}
+                `shouldBe` True
         it "will work with `elem` as Person is in Eq" $ do
-            pending
-            {- let beastieBoys = [mca, adRock, mikeD] -}
-            {- (mikeD `elem` beastieBoys) `shouldBe` True -}
+            let beastieBoys = [mca, adRock, mikeD]
+            (mikeD `elem` beastieBoys) `shouldBe` True
         it "is is now an instance of Show" $ do
-            pending
-            {- "mikeD is: " ++ show mikeD -}
-                {- `shouldBe` "mikeD is: Person {firstName = \"Michael\", lastName = \"Diamond\", age = 43}" -}
+            "mikeD is: " ++ show mikeD
+                `shouldBe` "mikeD is: Person {firstName = \"Michael\", lastName = \"Diamond\", age = 43}"
         it "is is now an instance of Read" $ do
-            pending
-            {- (firstName $ (read "Person {firstName=\"Michael\",lastName=\"Diamond\",age=43}" :: Person)) -}
-                {- `shouldBe` "Michael" -}
+            (firstName $ (read "Person {firstName=\"Michael\",lastName=\"Diamond\",age=43}" :: Person))
+                `shouldBe` "Michael"
         it "can infer the type, no type annotation is needed" $ do
-            pending
-            {- read "Person {firstName=\"Michael\",lastName=\"Diamond\",age=43}" == mikeD -}
-                {- `shouldBe` True -}
+            read "Person {firstName=\"Michael\",lastName=\"Diamond\",age=43}" == mikeD
+                `shouldBe` True
+
+-- Continue to Katas.Types.MoreDerivedInstancesSpec
