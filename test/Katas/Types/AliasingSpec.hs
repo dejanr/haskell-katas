@@ -4,6 +4,9 @@ import Test.Hspec
 import Test.QuickCheck
 import qualified Data.Map as Map
 
+main :: IO ()
+main = hspec spec
+
 type PhoneNumber = String
 type Name = String
 type PhoneBook = [(Name,PhoneNumber)]
@@ -17,7 +20,8 @@ phoneBook =
     ,("penny","853-2492")
     ]
 
-{- inPhoneBook :: Name -> PhoneNumber -> PhoneBook -> Bool -}
+inPhoneBook :: Name -> PhoneNumber -> PhoneBook -> Bool
+inPhoneBook name pnumber pbook = (name,pnumber) `elem` pbook
 
 {-
  Make sure you understand the difference between:
@@ -31,10 +35,21 @@ phoneBook =
    LockerMap is a map of Int and (LockerState and Code)
 -}
 
-{- lockerLookup :: Int -> LockerMap -> Either String Code -}
+data LockerState = Taken | Free deriving (Eq)
+type Code = String
+type LockerMap = Map.Map Int (LockerState, Code)
 
+lockerLookup :: Int -> LockerMap -> Either String Code
+lockerLookup slot lockers =
+    let foundLocker = Map.lookup slot lockers
+    in case foundLocker of
+         Nothing -> Left $ "Locker number " ++ show slot ++ " doesn't exist!"
+         Just (lockerState, code) -> if lockerState == Free
+                                        then Right code
+                                        else Left $ "Locker " ++ show slot ++ " is already taken!"
 {-
 -- Use this mock datasource
+-}
 lockers :: LockerMap
 lockers = Map.fromList
     [(100,(Taken,"ZD39I"))
@@ -44,24 +59,23 @@ lockers = Map.fromList
     ,(109,(Free,"893JJ"))
     ,(110,(Free,"99292"))
     ]
--}
 
 spec :: Spec
 spec = do
     describe "Type aliasing" $ do
         it "makes the type declaration more clearer" $ do
-            pending
-            {- inPhoneBook "wendy" "939-8282" phoneBook -}
-                {- `shouldBe` True -}
-            {- inPhoneBook "wendy1" "939-8282" phoneBook -}
-                {- `shouldBe` False -}
+            inPhoneBook "wendy" "939-8282" phoneBook
+                `shouldBe` True
+            inPhoneBook "wendy1" "939-8282" phoneBook
+                `shouldBe` False
         it "can look up a locker" $ do
-            pending
-            {- lockerLookup 101 lockers -}
-                {- `shouldBe` Right "JAH3I" -}
-            {- lockerLookup 100 lockers -}
-                {- `shouldBe` Left "Locker 100 is already taken!" -}
-            {- lockerLookup 102 lockers -}
-                {- `shouldBe` Left "Locker number 102 doesn't exist!" -}
-            {- lockerLookup 110 lockers -}
-                {- `shouldBe` Right "99292" -}
+            lockerLookup 101 lockers
+                `shouldBe` Right "JAH3I"
+            lockerLookup 100 lockers
+                `shouldBe` Left "Locker 100 is already taken!"
+            lockerLookup 102 lockers
+                `shouldBe` Left "Locker number 102 doesn't exist!"
+            lockerLookup 110 lockers
+                `shouldBe` Right "99292"
+
+-- Continue to Katas.Types.RecursiveDataStructuresSpec
