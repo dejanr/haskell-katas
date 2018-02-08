@@ -39,7 +39,7 @@ treeElem x (Node y left right)
 
 
 spec :: Spec
-spec = do
+spec =
     describe "Recursive Data Structures" $ do
         {- Example 1 -}
         it "can define a List" $ do
@@ -47,8 +47,8 @@ spec = do
             4 `Cons` (5 `Cons` Empty)
                 `shouldBe` Cons 4 (Cons 5 Empty)
         it "can set fixity declarations with infixr 5" $ do
-            5 :-: Empty' `shouldBe` ((:-:) 5 Empty')
-            4 :-: 5 :-: Empty' `shouldBe` ((:-:) 4 ((:-:) 5 Empty'))
+            5 :-: Empty' `shouldBe` (:-:) 5 Empty'
+            4 :-: 5 :-: Empty' `shouldBe` (:-:) 4 ((:-:) 5 Empty')
         it "can express a binary search tree" $ do
             let nums = [8,6,4,1,7,3,5]
             let numsTree = foldr treeInsert EmptyTree nums
