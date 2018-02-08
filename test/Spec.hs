@@ -98,7 +98,7 @@ spec = do
     describe "30 - Types - Recursive Data Structures" Katas.Types.RecursiveDataStructuresSpec.spec
     describe "31 - Types - More Type Classes" Katas.Types.MoreTypeClassesSpec.spec
     describe "32 - Types - YesNo Type Class" Katas.Types.YesNoTypeClassSpec.spec
-    describe "33 - FAM - Functor Type Class" Katas.Fa.FunctorTypeClassSpec.spec
+    describe "33 - FA - Functor Type Class" Katas.Fa.FunctorTypeClassSpec.spec
     describe "34 - Exercises - London to Heathrow" Katas.Exercises.LondonToHeathrowSpec.spec
     describe "35 - Exercises - Reverse Polish Notation Calculator" Katas.Exercises.RPNCalculatorSpec.spec
     describe "36 - FA - Fmap Function Composition" Katas.Fa.FmapFunctionCompositionSpec.spec
