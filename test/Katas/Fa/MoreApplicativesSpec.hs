@@ -15,12 +15,12 @@ import Control.Applicative
     computations that might have failed, etc. by using the applicative style.
 -}
 
+main :: IO ()
+main = hspec spec
+
 -- Implement this function
 sequenceA' :: (Applicative f) => [f a] -> f [a]
 sequenceA' = foldr (liftA2 (:)) (pure [])
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =
