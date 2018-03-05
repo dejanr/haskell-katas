@@ -17,30 +17,30 @@ import Test.QuickCheck
     parameter represents the type of the first component of the tuple.
 -}
 
-{- newtype CharList = ___ -}
+main :: IO ()
+main = hspec spec
 
-{- newtype Pair ... = ___ -}
+newtype CharList a = CharList { getCharList :: String } deriving (Show, Eq)
 
-{- instance Functor (Pair c) where -}
-    {- fmap ___ -}
+newtype Pair b a = Pair { getPair :: (a,b) }
+
+instance Functor (Pair c) where
+    fmap f (Pair (x, y)) = Pair (f x, y)
 
 spec :: Spec
-spec = do
+spec =
     describe "newtype" $ do
         it "can print values" $ do
-            pending
-            {- let charList = ___ -}
-            {- show charList -}
-                {- `shouldBe` "CharList {getCharList = \"this will be shown!\"}" -}
+            let charList = CharList "this will be shown!"
+            show charList
+                `shouldBe` "CharList {getCharList = \"this will be shown!\"}"
         it "can equate values" $ do
-            pending
-            {- CharList "benny" == CharList "benny" -}
-                {- `shouldBe` ___ -}
-            {- CharList "benny" == CharList "oisters" -}
-                {- `shouldBe` ___ -}
+            CharList "benny" == CharList "benny"
+                `shouldBe` True
+            CharList "benny" == CharList "oisters"
+                `shouldBe` False
         it "works with the newtype Pair" $ do
-            pending
-            {- (getPair $ fmap (*100) (Pair (2,3))) -}
-                {- `shouldBe` (200, 3) -}
-            {- (getPair $ fmap reverse (Pair ("london calling", 3))) -}
-                {- `shouldBe` ("gnillac nodnol", 3) -}
+            getPair (fmap (*100) (Pair (2,3)))
+                `shouldBe` (200, 3)
+            getPair (fmap reverse (Pair ("london calling", 3)))
+                `shouldBe` ("gnillac nodnol", 3)
