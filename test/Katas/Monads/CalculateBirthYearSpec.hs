@@ -65,6 +65,6 @@ spec =
         it "works with do notation" $ do
             birthYear <- pure "1980"
             let maybeAge = do
-                yearInteger <- readMaybe birthYear
-                return $ yearToAge yearInteger
+                    yearInteger <- readMaybe birthYear
+                    return $ yearToAge yearInteger
             displayAge maybeAge `shouldBe` "In 2020 you'll be 40"
