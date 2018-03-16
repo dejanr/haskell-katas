@@ -34,7 +34,12 @@ banana _ = Nothing
    2 lands right
    1 lands left
 -}
-{- routine :: Maybe Pole -}
+routine :: Maybe Pole
+routine = do
+    let start = (0,0)
+    first <- landLeft 2 start
+    second <- landRight 2 first
+    landLeft 1 second
 
 {-
    Starts from (0,0)
@@ -43,30 +48,37 @@ banana _ = Nothing
    2 lands right
    1 lands left
 -}
-{- routineWithFall :: Maybe Pole -}
+routineWithFall :: Maybe Pole
+routineWithFall = do
+    let start = (0,0)
+    first <- landLeft 2 start
+    Nothing
+    second <- landRight 2 first
+    landLeft 1 second
 
 -- pattern match with <- for the first character of "hello"
-{- justH :: Maybe Char -}
-
+justH :: Maybe Char
+justH = do
+    (x:xs) <- pure "hello"
+    return x
 
 -- same as above, but use Maybe empty string as input
-{- wopwop :: Maybe Char -}
+wopwop :: Maybe Char
+wopwop = do
+    (x:xs) <- Just ""
+    return x
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "Bird Landing" $ do
-        it "can leverage do notation" $ do
-            pending
-            {- routine `shouldBe` Just (3,2) -}
-        it "will fall when Nothing is used" $ do
-            pending
-            {- routineWithFall `shouldBe` Nothing -}
-        it "can use pattern match at binding" $ do
-            pending
-            {- justH `shouldBe` Just 'h' -}
-        it "returns Nothing when pattern matching fails" $ do
-            pending
-            {- wopwop `shouldBe` Nothing -}
+        it "can leverage do notation" $
+            routine `shouldBe` Just (3,2)
+        it "will fall when Nothing is used" $
+            routineWithFall `shouldBe` Nothing
+        it "can use pattern match at binding" $
+            justH `shouldBe` Just 'h'
+        it "returns Nothing when pattern matching fails" $
+            wopwop `shouldBe` Nothing
