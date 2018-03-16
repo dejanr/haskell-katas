@@ -29,7 +29,7 @@ map' f (x:xs) = f x : map' f xs
 
 filter' :: (Eq a) => (a -> Bool) -> [a] -> [a]
 filter' _ [] = []
-filter' f (x:xs) = (if f x then [x] else []) ++ filter' f xs
+filter' f (x:xs) = [x | f x] ++ filter' f xs
 
 chain :: Integral a => a -> [a]
 chain 1 = [1]
@@ -38,11 +38,11 @@ chain x
   | otherwise = x : chain (x*3+1)
 
 spec :: Spec
-spec = do
+spec =
     describe "Higher Order Functions" $ do
-        it "can copare it with 100" $ do
+        it "can copare it with 100" $
             compareWithHundred 100 `shouldBe` EQ
-        it "can divide by 10 with partial function" $ do
+        it "can divide by 10 with partial function" $
             divideByTen 200 `shouldBe` 20.0
         it "can tell if upper-case letter" $ do
             isUpperAlphanum 'b' `shouldBe` False
@@ -64,7 +64,7 @@ spec = do
             filter' (>3) [] `shouldBe` []
             filter' (>3) [1..5] `shouldBe` [4,5]
             filter' (==3) [1..5] `shouldBe` [3]
-        it "can calculate the Collatz sequenses" $ do
+        it "can calculate the Collatz sequenses" $
             {- if it's even, divide by two -}
             {- it it's odd, multiply by 3 and add 1 to it -}
             chain 1 `shouldBe` [1]

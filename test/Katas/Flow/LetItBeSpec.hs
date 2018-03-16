@@ -21,7 +21,7 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "Let bindings are almost like where" $ do
         it "can calculate cylinder surface area" $ do
             cylinder 1 2 `shouldBe` 18.84955592153876
@@ -29,7 +29,7 @@ spec = do
         it "is an expression in itself" $ do
             let result = [let square x = x^2 in (square 5,square 3,square 2)]
             result `shouldBe` [(25,9,4)]
-        it "can be used in list comprehensions" $ do
+        it "can be used in list comprehensions" $
             calcBmis [(80,1.9)] `shouldBe` []
 
 -- Continue to Katas.Flow.CaseExpressionSpec

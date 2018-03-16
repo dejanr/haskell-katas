@@ -4,8 +4,8 @@ import Test.Hspec
 import Test.QuickCheck
 
 maximum' :: (Ord a) => [a] -> a
-maximum' (x:[]) = x
-maximum' (x:xs) = x `max` (maximum' xs)
+maximum' [x] = x
+maximum' (x:xs) = x `max` maximum' xs
 
 replicate' :: Int -> a -> [a]
 replicate' 1 x = [x]
@@ -29,9 +29,7 @@ zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
 
 myElem :: (Eq a) => a -> [a] -> Bool
 myElem _ [] = False
-myElem x (y:ys) = if x == y
-                     then True
-                     else myElem x ys
+myElem x (y:ys) = (x == y) || myElem x ys
 
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
@@ -43,21 +41,21 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "Recursion" $ do
-        it "calculates maximum" $ do
+        it "calculates maximum" $
             maximum' [2,5,1] `shouldBe` 5
-        it "replicates items" $ do
+        it "replicates items" $
             replicate' 5 'a' `shouldBe` "aaaaa"
-        it "takes from a collection" $ do
+        it "takes from a collection" $
             take' 3 "abcde" `shouldBe` "abc"
-        it "reverses a collection" $ do
+        it "reverses a collection" $
             reverse' [1,2,3] `shouldBe` [3,2,1]
-        it "can repeat items" $ do
+        it "can repeat items" $
             take' 3 (repeat' 'a') `shouldBe` "aaa"
-        it "can zip items" $ do
+        it "can zip items" $
             zip' [1,2,3] ['a','b'] `shouldBe` [(1,'a'),(2,'b')]
-        it "can check if an item is an element of a list" $ do
+        it "can check if an item is an element of a list" $
             myElem 3 [1,2,3] `shouldBe` True
         it "can do QuickSort - easily" $ do
             quicksort [3,1,2] `shouldBe` [1,2,3]

@@ -11,23 +11,23 @@ head' xs = case xs of
 describeList :: [a] -> String
 describeList xs = "The list is " ++ case xs of
                                       [] -> "empty."
-                                      (x:[]) -> "a singleton list."
+                                      ([x]) -> "a singleton list."
                                       (x:_) -> "a longer list."
 
 {- Case statement can be written with patten matching -}
 describeList' :: [a] -> String
 describeList' xs = "The list is " ++ what xs
     where what [] = "is empty."
-          what (x:[]) = "a singleton list."
+          what ([x]) = "a singleton list."
           what (x:_) = "a longer list."
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "Case expressions" $ do
-        it "can be used anywhere" $ do
+        it "can be used anywhere" $
             head' [1,3] `shouldBe` 1
         it "can be even used in expressions" $ do
             describeList [] `shouldBe` "The list is empty."

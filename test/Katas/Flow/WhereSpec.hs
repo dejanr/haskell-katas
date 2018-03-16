@@ -27,14 +27,14 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "where - to DRY up logic" $ do
-        it "can calculate BMI from values" $ do
+        it "can calculate BMI from values" $
             bmiTell 85 1.90 `shouldBe` "You're supposedly normal."
         it "can extract initials from a string" $ do
             initials "" "" `shouldBe` ""
             initials "John" "Smith" `shouldBe` "JS"
-        it "can be used in list comprehensions" $ do
+        it "can be used in list comprehensions" $
             calcBmis [(85, 1.90)] `shouldBe` [23.545706371191137]
 
 -- Continue to Katas.Flow.LetItBeSpec

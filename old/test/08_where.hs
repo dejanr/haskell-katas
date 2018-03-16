@@ -15,7 +15,7 @@ import Control.Exception (evaluate)
 {- calcBmis :: Fractional t => [(t, t)] -> [t] -}
 
 main :: IO()
-main = hspec $ do
+main = hspec $
     describe "where - to DRY up logic" $ do
         it "can calculate BMI from values" $ do
             pending
