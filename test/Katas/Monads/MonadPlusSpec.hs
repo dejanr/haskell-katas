@@ -21,36 +21,35 @@ import Control.Monad
 -}
 
 -- Use do notation just like in the examples below
-{- sevensOnly :: [Int] -}
+sevensOnly :: [Int]
+sevensOnly = do
+    x <- [1..50]
+    guard ('7' `elem` show x)
+    return x
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "guard" $ do
-        it "can filter list of numbers with digits 7" $ do
-            pending
-            {- [x | x <- [1..50], ___ ] -}
-                {- `shouldBe` [7,17,27,37,47] -}
+        it "can filter list of numbers with digits 7" $
+            [x | x <- [1..50], '7' `elem` show x]
+                `shouldBe` [7,17,27,37,47]
         it "can put it in a minimal default context if true" $ do
             -- compare 5 and 2 in the examples below
-            pending
-            {- (guard (___) :: Maybe ()) `shouldBe` (Just ()) -}
-            {- (guard (___) :: Maybe ()) `shouldBe` Nothing -}
-            {- (guard (___) :: [()]) `shouldBe` [()] -}
-            {- (guard (___) :: [()]) `shouldBe` [] -}
-        it "can be used to filter out non-deterministic computations" $ do
-            pending
-            {- ([1..50] >>= (\x -> (___) >> return x)) -}
-                {- `shouldBe` [7,17,27,37,47] -}
+            (guard (5 > 2) :: Maybe ()) `shouldBe` Just ()
+            (guard (1 > 2) :: Maybe ()) `shouldBe` Nothing
+            (guard (5 > 2) :: [()]) `shouldBe` [()]
+            (guard (1 > 2) :: [()]) `shouldBe` []
+        it "can be used to filter out non-deterministic computations" $
+            ([1..50] >>= (\x -> guard ('7' `elem` show x) >> return x))
+                `shouldBe` [7,17,27,37,47]
         it "works in conjunction with >>" $ do
             -- compare 5 and 2 in the examples below
-            pending
-            {- (guard (___) >> return "cool" :: [String]) -}
-                {- `shouldBe` ["cool"] -}
-            {- (guard (___) >> return "cool" :: [String]) -}
-                {- `shouldBe` [] -}
-        it "can be expressed with do notation" $ do
-            pending
-            {- sevensOnly `shouldBe` [7,17,27,37,47] -}
+            (guard (5 > 2) >> return "cool" :: [String])
+                `shouldBe` ["cool"]
+            (guard (1 > 2) >> return "cool" :: [String])
+                `shouldBe` []
+        it "can be expressed with do notation" $
+            sevensOnly `shouldBe` [7,17,27,37,47]
