@@ -47,14 +47,14 @@ firstLetter "" = "Empty string, whoops!"
 firstLetter l@(x:_) = "The first letter of " ++ l ++ " is " ++ [x]
 
 spec :: Spec
-spec = do
+spec =
     describe "Pattern matching" $ do
-        it "can be used in factorial calc" $ do
+        it "can be used in factorial calc" $
             factorial 5 `shouldBe` 120
-        it "can fail when no default case" $ do
+        it "can fail when no default case" $
             charName 'a' `shouldBe` "Albert"
             {- evaluate (charName 'd') `shouldThrow` anyErrorCall -}
-        it "can be used on tuples" $ do
+        it "can be used on tuples" $
             addVectors (1,2)(3,4) `shouldBe` (4,6)
         it "can be used on triples" $ do
             first (1,2,3) `shouldBe` 1

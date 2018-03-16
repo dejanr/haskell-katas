@@ -16,7 +16,7 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-    describe "Functions have types" $ do
+    describe "Functions have types" $
         it "can use a function with type" $ do
             removeNonUppercase "HelloWORLD" `shouldBe` "HWORLD"
             addThree 1 2 3 `shouldBe` 6
@@ -24,7 +24,7 @@ spec = do
         it "can order strings" $ do
             "Abrakadabra" == "Zebra" `shouldBe` False
             {- use the words "Abrakadabra"  "Zebra" -}
-            (compare "Abrakadabra" "Zebra") `shouldBe` LT
+            compare "Abrakadabra" "Zebra" `shouldBe` LT
             5 >= 3 `shouldBe` True
             5 `compare` 3 `shouldBe` GT
         it "can show anything" $ do
@@ -41,12 +41,12 @@ spec = do
             [3..5] `shouldBe` [3,4,5]
             {- succ to get the next -}
             succ 'B' `shouldBe` 'C'
-    describe "Num is a numeric typeclass" $ do
-        it "can act like numbers" $ do
+    describe "Num is a numeric typeclass" $
+        it "can act like numbers" $
             {- use the type -}
             (20 :: Int) `shouldBe` 20
-    describe "fromIntegral is there historical reasons" $ do
-        it "can add Int and Floating point numbers" $ do
+    describe "fromIntegral is there historical reasons" $
+        it "can add Int and Floating point numbers" $
             {- from... function -}
             fromIntegral (length [1,2,3,4]) + 3.2 `shouldBe` 7.2
 
