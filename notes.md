@@ -54,11 +54,26 @@ This gives us functions wrapped in a list:
 λ>
 ```
 
+The instance implementation for lists:
+```haskell
+instance Applicative [] where
+    pure x = [x]
+    fs <*> xs = [f x | f <- fs, x <- xs]
+```
+
 There is a shorter way to do this:
 
 ```shell
 λ> (*) <$> Just 2 <*> Just 3
 Just 6
+```
+
+The instance implementation for Maybe values:
+```haskell
+instance Applicative Maybe where
+    pure = Just
+    Nothing <*> _ = Nothing
+    (Just f) <*> something = fmap f something
 ```
 
 The `<$>` is an abbreviation for fmap.
