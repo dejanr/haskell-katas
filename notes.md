@@ -13,6 +13,18 @@ And for Maybe types
       fmap f Nothing = Nothing
 ```
 
+Check out these examples:
+
+```shell
+λ> fmap (*2) (Just 4)
+Just 8
+λ> (*2) <$> (Just 4)
+Just 8
+λ> (*3) <$> [1..4]
+[3,6,9,12]
+λ>
+```
+
 ## Applicatives
 
 This gives us functions wrapped in a Just:
