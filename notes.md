@@ -1,5 +1,7 @@
 ## Functors
 
+This is the typeclass for Functors:
+
 ```haskell
 class Functor f where
     fmap :: (a -> b) -> f a -> f b
@@ -26,6 +28,14 @@ Just 8
 ```
 
 ## Applicatives
+
+This is the typeclass for Applicative Functors. Notice that a Applicative has to be a Functor as well:
+
+```haskell
+class (Functor f) => Applicative f where
+    pure :: a -> f a
+    (<*>) :: f (a -> b) -> f a -> f b
+```
 
 This gives us functions wrapped in a Just:
 
@@ -58,12 +68,6 @@ Same works as well:
 ```shell
 λ> (+) <$> pure 2 <*> [1,2,3,4]
 [3,4,5,6]
-```
-
-```haskell
-class (Functor f) => Applicative f where
-    pure :: a -> f a
-    (<*>) :: f (a -> b) -> f a -> f b
 ```
 
 ## Type vs Data Constructors
