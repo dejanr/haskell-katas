@@ -29,7 +29,8 @@ type Food = String
 type Price = Sum Int
 
 {-
-    This is the menu
+    A function that adds drinks to food items.
+    This is the menu:
     beans -> milk is 25
     jerky -> whiskey is 99
     _ -> beer is 30
