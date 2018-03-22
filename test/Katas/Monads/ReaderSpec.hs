@@ -10,38 +10,35 @@ import Test.QuickCheck
         h >>= f = \w -> f (h w) w
 -}
 
-{- addStuffSimple :: Int -> Int -}
+addStuffSimple :: Int -> Int
 -- times 2 and plus 10
-{- addStuffSimple x = let -}
-    {- a = ___ -}
-    {- b = ___ -}
-    {- in a+b -}
+addStuffSimple x = let
+    a = (*2) x
+    b = (+10) x
+    in (a+b)
 
-{- addStuff :: Int -> Int -}
+addStuff :: Int -> Int
 -- same here, times 2 and plus 10
-{- addStuff = do -}
-    {- a <- ___ -}
-    {- b <- ___ -}
-    {- return (a+b) -}
+addStuff = do
+    a <- (*2)
+    b <- (+10)
+    return (a+b)
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = do
+spec =
     describe "Reader" $ do
         it "functions are applicative functors" $ do
-            pending
             -- times 5 and plus 3
-            {- let f = ___ -}
-            {- let g = ___ -}
-            {- (fmap f g) 8 `shouldBe` 55 -}
+            let f = (*5)
+            let g = (+3)
+            fmap f g 8 `shouldBe` 55
             -- times 2 and plus 10
-            {- let f = (+) <$> ___ <*> ___ -}
-            {- f 3 `shouldBe` 19 -}
-        it "can add numbers together" $ do
-            pending
-            {- addStuffSimple 3 `shouldBe` 19 -}
-        it "can use functions as monadic values" $ do
-            pending
-            {- addStuff 3 `shouldBe` 19 -}
+            let f = (+) <$> (*2) <*> (+10)
+            f 3 `shouldBe` 19
+        it "can add numbers together" $
+            addStuffSimple 3 `shouldBe` 19
+        it "can use functions as monadic values" $
+            addStuff 3 `shouldBe` 19
