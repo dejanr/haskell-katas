@@ -75,13 +75,12 @@ main = hspec spec
 spec :: Spec
 spec =
     describe "Stateful Computations" $ do
-        it "can operate on a stack" $ do
+        it "can operate on a stack" $
             stackManip [5,8,2,1] `shouldBe` (5,[8,2,1])
-        it "can operate with State on stack" $ do
-            (runState stackManip' [5,8,2,1]) `shouldBe` (5,[8,2,1])
+        it "can operate with State on stack" $
+            runState stackManip' [5,8,2,1] `shouldBe` (5,[8,2,1])
         it "can run conditional logic with Monads"$ do
-            (runState stackStuff [9,0,2,1,0]) `shouldBe` ((),[8,3,0,2,1,0])
-            (runState stackStuff [5,0,2,1,0]) `shouldBe` ((),[5,0,2,1,0])
-        it "can weave other functions with State" $ do
-            (runState moreStack [5,8,2,1]) `shouldBe` ((),[8,2,1])
-
+            runState stackStuff [9,0,2,1,0] `shouldBe` ((),[8,3,0,2,1,0])
+            runState stackStuff [5,0,2,1,0] `shouldBe` ((),[5,0,2,1,0])
+        it "can weave other functions with State" $
+            runState moreStack [5,8,2,1] `shouldBe` ((),[8,2,1])
