@@ -1,4 +1,4 @@
-module Katas.Exercises.MpasAndSetsSpec (spec) where
+module Katas.Exercises.MapsAndSetsSpec (spec) where
 
 import Test.Hspec
 import qualified Data.Map as Map
