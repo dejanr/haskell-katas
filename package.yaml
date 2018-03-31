@@ -30,3 +30,4 @@ tests:
       - containers
       - bytestring
       - mtl
+      - lens
