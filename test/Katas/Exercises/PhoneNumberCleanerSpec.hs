@@ -7,10 +7,10 @@ main = hspec spec
 
 convert :: [String] -> [(Int, String)]
 convert =
-    filterShorts . makeTuples . map onlyNumericChars
+    filterNon10s . makeTuples . map onlyNumericChars
     where makeTuples pns = zipWith (\x y -> (y, x)) pns [0..]
           onlyNumericChars pns = [x | x<-pns, x `elem` ['0'..'9']]
-          filterShorts = filter (\(idx, pn) -> length pn == 10)
+          filterNon10s = filter (\(idx, pn) -> length pn == 10)
 
 spec :: Spec
 spec =
@@ -25,12 +25,12 @@ spec =
             let input = ["a3128342494"
                         ,"218b3422284"]
             convert input `shouldBe` result
-        it "will filter out every non-10 digit numbers" $ do
+        it "can filter out every non-10 digit numbers" $ do
             let input = ["3128342494"
                         ,"2183422284"
                         ,"123"]
             convert input `shouldBe` result
-        it "will filter out all non 10 char length phone number " $ do
+        it "can filter out invalid numbers mixed with other chars" $ do
             let input = ["31283424"
                         ,"2183422284"
                         ,"12345678901"
