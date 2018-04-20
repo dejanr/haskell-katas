@@ -1,10 +1,19 @@
 module Katas.Fa.MonoidsSpec (spec) where
 
 import Test.Hspec
-import Test.QuickCheck
 import Data.Monoid
 
 {-
+    Many mathematical objects are monoids, because the "bar to entry"
+    is very low. In order to be considered a monoid, an object must have
+    two properties:
+    * An associative binary operator. Let's call it (*): the epxression
+      a * (b * c) must give the same result as (a * b) * c.
+    * An identity value. If we call this e, it must obey two rules
+      a * e == a and e * a == a.
+    For addition, the identity value is zero, for multiplication, it's
+    one.
+
     Look at this typeclass:
     class Monoid m where
         mempty :: m

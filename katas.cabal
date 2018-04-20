@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f68ea4a4fc8a9fa1c2974fecdeb30dca8fb98a1239e201b0bafe4e1dfcd1b85a
+-- hash: 7658721c002f8fbb4515e203b4c98d37f8639f7e5e1e940f0a6410de370bfe87
 
 name:                katas
 version:             0.1.0.0
@@ -62,6 +62,7 @@ test-suite katas-test
       Katas.Fa.MaybeMonoidsSpec
       Katas.Fa.MonoidsSpec
       Katas.Fa.MoreApplicativesSpec
+      Katas.Fa.NewTypeMonoidSpec
       Katas.Fa.NewTypeSpec
       Katas.Fa.OrderingMonoidsSpec
       Katas.Flow.CaseExpressionSpec
