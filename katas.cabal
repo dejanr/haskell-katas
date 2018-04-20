@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7658721c002f8fbb4515e203b4c98d37f8639f7e5e1e940f0a6410de370bfe87
+-- hash: 57c6d2f30f72ca9cc0386314733afe6ec9114e8df0226e9df8c5827cd56cca5d
 
 name:                katas
 version:             0.1.0.0
@@ -111,6 +111,7 @@ test-suite katas-test
       Katas.Types.MoreTypeClassesSpec
       Katas.Types.RecordSpec
       Katas.Types.RecursiveDataStructuresSpec
+      Katas.Types.SequenceSpec
       Katas.Types.TypeParametersSpec
       Katas.Types.YesNoTypeClassSpec
       Paths_katas
