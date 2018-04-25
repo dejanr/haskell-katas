@@ -37,7 +37,6 @@ treeElem x (Node y left right)
     | x < y = treeElem x left
     | otherwise = treeElem x right
 
-
 spec :: Spec
 spec =
     describe "Recursive Data Structures" $ do
