@@ -17,24 +17,24 @@ Given this tree:
 data Tree a = Leaf | Node a (Tree a) (Tree a) deriving (Show, Eq)
 
 tree :: Tree Int
-tree = (Node 20
-            (Node 10
-                (Node 5 Leaf Leaf)
-                (Node 15 Leaf Leaf))
-            (Node 30
-                (Node 22 Leaf Leaf)
-                (Node 35 Leaf Leaf)))
-invalidTree = (Node 20
+tree = Node 20
+           (Node 10
+               (Node 5 Leaf Leaf)
+               (Node 15 Leaf Leaf))
+           (Node 30
+               (Node 22 Leaf Leaf)
+               (Node 35 Leaf Leaf))
+invalidTree = Node 20
             (Node 10
                 (Node 5 Leaf Leaf)
                 (Node 15 Leaf Leaf))
             (Node 30
                 (Node 18 Leaf Leaf)
-                (Node 35 Leaf Leaf)))
+                (Node 35 Leaf Leaf))
 
 allNodes :: (Int -> Bool) -> Tree Int -> Bool
 allNodes _ Leaf = True
-allNodes fn (Node n left right) = (fn n) && allNodes fn left && allNodes fn right
+allNodes f (Node n left right) = f n && allNodes f left && allNodes f right
 
 isBalanced :: Tree Int -> Bool
 isBalanced tree =
@@ -43,9 +43,8 @@ isBalanced tree =
 balanced :: Tree Int -> [Bool]
 balanced (Node x Leaf Leaf) = [True]
 balanced (Node x left right) =
-    if allNodes (<x) left && allNodes (>x) right
-    then [True] ++ (balanced left) ++ (balanced right)
-    else [False] ++ (balanced left) ++ (balanced right)
+    let balancedValue = allNodes (<x) left && allNodes (>x) right
+     in balancedValue : (balanced left ++ balanced right)
 
 spec :: Spec
 spec =
@@ -57,5 +56,5 @@ spec =
             let (Node x left right) = tree
             allNodes (>x) right `shouldBe` True
         it "can tell if a tree is balanced" $ do
-            (isBalanced tree) `shouldBe` True
-            (isBalanced invalidTree) `shouldBe` False
+            isBalanced tree `shouldBe` True
+            isBalanced invalidTree `shouldBe` False
