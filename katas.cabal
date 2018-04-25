@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 89ff650ae9ae7dd4dcbb13a0e5bed4377e75ae6c0d4428457f29366992fbff4e
+-- hash: d881d2818b37fa7e1807c1eaef8d4c899c3d67fc66d596256207bd1f5a75dadd
 
 name:                katas
 version:             0.1.0.0
@@ -49,6 +49,7 @@ test-suite katas-test
     , lens
     , mtl
   other-modules:
+      Katas.Exercises.BalancedBinaryTreeSpec
       Katas.Exercises.KnightsQuestSpec
       Katas.Exercises.LondonToHeathrowSpec
       Katas.Exercises.MapsAndSetsSpec
