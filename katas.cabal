@@ -2,18 +2,18 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d881d2818b37fa7e1807c1eaef8d4c899c3d67fc66d596256207bd1f5a75dadd
+-- hash: 44651dff113bbbd33c1d70c180d1c9924d47f64b84991120ffcd891b64302e01
 
-name:                katas
-version:             0.1.0.0
-homepage:            https://github.com/adomokos/hashmir#readme
-license-file:        LICENSE
-author:              Attila Domokos <adomokos@gmail.com>
-maintainer:          adomokos@gmail.com
-copyright:           2018 Attila Domokos
-category:            Console App
-build-type:          Simple
-cabal-version:       >= 1.10
+name:           katas
+version:        0.1.0.0
+category:       Console App
+homepage:       https://github.com/adomokos/hashmir#readme
+author:         Attila Domokos <adomokos@gmail.com>
+maintainer:     adomokos@gmail.com
+copyright:      2018 Attila Domokos
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
 
 library
   hs-source-dirs:
@@ -47,6 +47,7 @@ test-suite katas-test
     , containers
     , hspec ==2.*
     , lens
+    , matrix
     , mtl
   other-modules:
       Katas.Exercises.BalancedBinaryTreeSpec
@@ -55,6 +56,7 @@ test-suite katas-test
       Katas.Exercises.MapsAndSetsSpec
       Katas.Exercises.PhoneNumberCleanerSpec
       Katas.Exercises.RPNCalculatorSpec
+      Katas.Exercises.SetNeighborsSpec
       Katas.Fa.ApplicativesSpec
       Katas.Fa.FmapFunctionCompositionSpec
       Katas.Fa.FmapReplicateSpec

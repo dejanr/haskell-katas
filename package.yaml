@@ -31,3 +31,4 @@ tests:
       - bytestring
       - mtl
       - lens
+      - matrix
