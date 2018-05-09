@@ -13,14 +13,14 @@ toBinaryString x = showIntAtBase 2 intToDigit x ""
 longestZeros :: Int -> Int
 longestZeros x = highest $ findLongestZeros (toBinaryString x)
     where highest (j, k) = if j > k then j else k
-          findLongestZeros = foldl (zeroFinder) (0,0)
+          findLongestZeros = foldl zeroFinder (0,0)
           zeroFinder (j, k) '1' = if j > k then (k,j) else (0,k)
           zeroFinder (j, k) '0' = (j+1, k)
 
 spec :: Spec
 spec =
     describe "Longest Zeros" $ do
-        it "reports when no zero is found" $ do
+        it "reports when no zero is found" $
             longestZeros 3 `shouldBe` 0
         it "reports one set of zero length" $ do
             longestZeros 4 `shouldBe` 2
