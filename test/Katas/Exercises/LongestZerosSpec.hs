@@ -22,7 +22,7 @@ toBinaryString :: Int -> String
 toBinaryString x = showIntAtBase 2 intToDigit x ""
 
 longestZeros :: Int -> Int
-longestZeros x = highest $ findLongestZeros (toBinaryString x)
+longestZeros = highest . findLongestZeros . toBinaryString
     where highest (j, k) = if j > k then j else k
           findLongestZeros = foldl zeroFinder (0,0)
           zeroFinder (j, k) '1' = if j > k then (k,j) else (0,k)
