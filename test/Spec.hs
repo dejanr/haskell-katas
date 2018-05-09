@@ -66,6 +66,7 @@ import qualified Katas.Exercises.KnightsQuestSpec
 import qualified Katas.Exercises.PhoneNumberCleanerSpec
 import qualified Katas.Exercises.BalancedBinaryTreeSpec
 import qualified Katas.Exercises.SetNeighborsSpec
+import qualified Katas.Exercises.LongestZerosSpec
 
 main :: IO ()
 main = hspec spec
@@ -138,3 +139,4 @@ spec = do
     describe "64 - Monads - Stateful Computations" Katas.Monads.StatefulComputationsSpec.spec
     describe "65 - Exercices - Balanced Binary Tree Check" Katas.Exercises.BalancedBinaryTreeSpec.spec
     describe "66 - Exercices - Set Neighbors' in a Matrix" Katas.Exercises.SetNeighborsSpec.spec
+    describe "67 - Exercices - Longest Zeros" Katas.Exercises.LongestZerosSpec.spec
