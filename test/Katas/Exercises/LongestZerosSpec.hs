@@ -1,5 +1,16 @@
 module Katas.Exercises.LongestZerosSpec (spec) where
 
+{-
+    Find the longest subsequent zero digit length in a
+    given integer number.
+
+    For example:
+        3 -> "11" is 0
+        4 -> "100" is 2
+        16 -> "10000" is 4
+        11653294 -> "101100011101000010101110" is 4
+-}
+
 import Test.Hspec
 import Data.Char (intToDigit)
 import Numeric (showIntAtBase)
