@@ -3,7 +3,7 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 .DEFAULT_GOAL := help
 
 run: ## Runs the app
-	time ~/.local/bin/katas-exe
+	@stack exec katas-exe
 
 test: ## Run the specs
 	time stack --no-terminal test --test-arguments=--format=progress
