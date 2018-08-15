@@ -4,6 +4,10 @@ import Test.Hspec
 import Test.QuickCheck
 {- import Control.Monad.Instances -}
 
+main :: IO ()
+main = hspec spec
+
+
 {-
     instance Monad ((->) r) where
         return x = \_ -> x
@@ -23,9 +27,6 @@ addStuff = do
     a <- (*2)
     b <- (+10)
     return (a+b)
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

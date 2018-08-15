@@ -4,13 +4,13 @@ import Test.Hspec
 import Test.QuickCheck
 import Text.Read (readMaybe)
 
+main :: IO ()
+main = hspec spec
+
 {-
     Calculate how old will someone be by the year 2020
     Use just `read` to convert String -> Int
 -}
-
-main :: IO ()
-main = hspec spec
 
 calculateAge :: String -> Int
 calculateAge year =

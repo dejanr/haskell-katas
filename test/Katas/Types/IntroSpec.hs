@@ -3,6 +3,9 @@ module Katas.Types.IntroSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 {- Create the `removeNonUppercase` function with proper type -}
 removeNonUppercase :: String -> String
 removeNonUppercase xs = [x | x <- xs, x `elem` ['A'..'Z']]
@@ -10,9 +13,6 @@ removeNonUppercase xs = [x | x <- xs, x `elem` ['A'..'Z']]
 {- Create the addThree function with proper type info -}
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y + z
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec = do

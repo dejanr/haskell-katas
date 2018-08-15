@@ -3,6 +3,9 @@ module Katas.Monads.DoNotationSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 foo :: Maybe String
 foo = Just 3   >>= (\x ->
       Just "!" >>= (\y ->
@@ -20,9 +23,6 @@ marySue :: Maybe Bool
 marySue = do
     x <- Just 9
     Just (x > 8)
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

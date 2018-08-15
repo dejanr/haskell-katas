@@ -4,6 +4,9 @@ import Test.Hspec
 import Test.QuickCheck
 import Control.Applicative
 
+main :: IO ()
+main = hspec spec
+
 {-
     You can think of functions as boxes, that contain their
     eventual result.
@@ -14,9 +17,6 @@ import Control.Applicative
     computations, such as I/O computations, non-deterministic computations,
     computations that might have failed, etc. by using the applicative style.
 -}
-
-main :: IO ()
-main = hspec spec
 
 -- Implement this function
 sequenceA' :: (Applicative f) => [f a] -> f [a]

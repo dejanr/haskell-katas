@@ -3,6 +3,9 @@ module Katas.Monads.BirdLandingSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 type Birds = Int
 type Pole = (Birds,Birds)
 
@@ -31,9 +34,6 @@ landRight b (l, r)
 
 banana :: Pole -> Maybe Pole
 banana _ = Nothing
-
-main :: IO ()
-main = hspec spec
 
 x -: f = f x
 

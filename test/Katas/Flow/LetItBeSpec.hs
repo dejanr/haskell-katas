@@ -3,6 +3,9 @@ module Katas.Flow.LetItBeSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 cylinder :: (RealFloat a) => a -> a -> a
 cylinder r h =
     let sideArea = 2 * r * pi * h
@@ -16,9 +19,6 @@ cylinder' r h = sideArea + 2 * topArea
 
 calcBmis :: (RealFloat a) => [(a,a)] -> [a]
 calcBmis xs = [bmi | (x, y) <- xs, let bmi = x / y^2, bmi >= 25.0]
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

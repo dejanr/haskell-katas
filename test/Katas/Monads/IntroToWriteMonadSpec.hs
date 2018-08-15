@@ -7,6 +7,9 @@ import Data.Monoid
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Char8 as B8
 
+main :: IO ()
+main = hspec spec
+
 isBigGang :: Int -> (Bool, String)
 isBigGang x = (x > 9, "Compared gang size to 9.")
 
@@ -39,9 +42,6 @@ addDrink :: Food -> (Food,Price)
 addDrink "beans" = ("milk", Sum 25)
 addDrink "jerky" = ("whiskey", Sum 99)
 addDrink _ = ("beer", Sum 30)
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

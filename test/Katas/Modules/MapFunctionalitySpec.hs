@@ -3,6 +3,9 @@ module Katas.Modules.MapFunctionalitySpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 phoneBook =
     [("betty","555-2938")
     ,("bonnie","452-2928")
@@ -26,9 +29,6 @@ findKey key ((name,number):xs)
 findKey' :: (Foldable t, Eq a) => a -> t (a, [Char]) -> Maybe [Char]
 findKey' key =
     foldl (\acc (name,number) -> if name == key then Just number else acc) Nothing
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec = do

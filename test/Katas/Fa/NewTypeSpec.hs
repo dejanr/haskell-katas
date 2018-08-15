@@ -3,6 +3,9 @@ module Katas.Fa.NewTypeSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 {-
     This would work:
     data ZipList a = ZipList { getZipList :: [a] }
@@ -16,9 +19,6 @@ import Test.QuickCheck
     We can newtype the tuple in a way that the second type
     parameter represents the type of the first component of the tuple.
 -}
-
-main :: IO ()
-main = hspec spec
 
 newtype CharList a = CharList { getCharList :: String } deriving (Show, Eq)
 

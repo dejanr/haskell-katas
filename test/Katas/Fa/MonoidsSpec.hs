@@ -3,6 +3,9 @@ module Katas.Fa.MonoidsSpec (spec) where
 import Test.Hspec
 import Data.Monoid
 
+main :: IO ()
+main = hspec spec
+
 {-
     Many mathematical objects are monoids, because the "bar to entry"
     is very low. In order to be considered a monoid, an object must have
@@ -34,9 +37,6 @@ import Data.Monoid
 
     For product and sum Data.Monoid exposes Product and Sum
 -}
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

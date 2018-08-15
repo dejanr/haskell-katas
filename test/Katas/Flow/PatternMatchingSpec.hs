@@ -3,6 +3,9 @@ module Katas.Flow.PatternMatchingSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 factorial :: Int -> Int
 factorial 0 = 1
 factorial x = x * factorial (x-1)
@@ -21,9 +24,6 @@ second (_, y, _) = y
 
 third :: (a, b, c) -> c
 third (_, _, z) = z
-
-main :: IO ()
-main = hspec spec
 
 head' :: [a] -> a
 head' (x:_) = x

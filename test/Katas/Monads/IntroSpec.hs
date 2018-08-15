@@ -15,13 +15,13 @@ module Katas.Monads.IntroSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 -- Let's not use >>=, create an applyMaybe fn
 applyMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
 applyMaybe Nothing _ = Nothing
 applyMaybe (Just x) f = f x
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

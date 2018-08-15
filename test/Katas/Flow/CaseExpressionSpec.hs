@@ -3,6 +3,9 @@ module Katas.Flow.CaseExpressionSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 head' :: [a] -> a
 head' xs = case xs of
              [] -> error "No item"
@@ -20,9 +23,6 @@ describeList' xs = "The list is " ++ what xs
     where what [] = "is empty."
           what ([x]) = "a singleton list."
           what (x:_) = "a longer list."
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

@@ -4,6 +4,9 @@ import Test.Hspec
 import Test.QuickCheck
 import Control.Monad
 
+main :: IO ()
+main = hspec spec
+
 {-
     MonadPlus type class is for monads that can also act as monoids:
 
@@ -26,9 +29,6 @@ sevensOnly = do
     x <- [1..50]
     guard ('7' `elem` show x)
     return x
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

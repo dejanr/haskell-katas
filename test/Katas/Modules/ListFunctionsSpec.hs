@@ -5,13 +5,13 @@ import Test.QuickCheck
 import qualified Data.List as L
 import Data.Function
 
+main :: IO ()
+main = hspec spec
+
 {- search :: (Eq a) => [a] -> [a] -> Bool -}
 {- search needle haystack = -}
     {- let nlen = length needle -}
     {- in foldl (\acc x -> if take nlen x == needle then True else acc) False (L.tails haystack) -}
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec = do

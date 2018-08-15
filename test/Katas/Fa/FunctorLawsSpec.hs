@@ -3,6 +3,9 @@ module Katas.Fa.FunctorLawsSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 {-
     ~~The first functor law:~~
     states that if we map the `id` function over a functor, the functor that
@@ -15,9 +18,6 @@ import Test.QuickCheck
     the functor and then mapping the other one.
         fmap (f . g) = fmap f . fmap g
 -}
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

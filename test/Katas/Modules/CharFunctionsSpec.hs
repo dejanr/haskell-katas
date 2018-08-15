@@ -6,14 +6,14 @@ import qualified Data.Char as C
 import qualified Data.List as L
 import Data.Function
 
+main :: IO ()
+main = hspec spec
+
 encode :: Int -> String -> String
 encode shifter input = map (\x -> C.chr (C.ord x + shifter)) input
 
 decode :: Int -> String -> String
 decode shifter encoded = encode (negate shifter) encoded
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec = do

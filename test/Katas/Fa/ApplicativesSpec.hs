@@ -3,6 +3,9 @@ module Katas.Fa.ApplicativesSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 {-
     functor definition
     class (Functor f) => Applicative f where
@@ -18,9 +21,6 @@ import Test.QuickCheck
     (<$>) :: (Functor f) => (a -> b) -> f a -> f b
     f <$> x = fmap f x
 -}
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

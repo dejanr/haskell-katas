@@ -3,6 +3,9 @@ module Katas.Flow.RecursionsSpec (spec) where
 import Test.Hspec
 import Test.QuickCheck
 
+main :: IO ()
+main = hspec spec
+
 maximum' :: (Ord a) => [a] -> a
 maximum' [x] = x
 maximum' (x:xs) = x `max` maximum' xs
@@ -36,9 +39,6 @@ quicksort [] = []
 quicksort (x:xs) = lowersorted ++ [x] ++ highersorted
     where lowersorted = quicksort [a | a <- xs, a <= x]
           highersorted = quicksort [a | a <- xs, a > x]
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

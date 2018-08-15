@@ -4,6 +4,9 @@ import Test.Hspec
 import Test.QuickCheck
 import Control.Monad
 
+main :: IO ()
+main = hspec spec
+
 {-
    Monad laws:
 
@@ -62,9 +65,6 @@ landRight :: Birds -> Pole -> Maybe Pole
 landRight n (left, right)
     | abs (left - (right + n)) < 4 = Just (left, right + n)
     | otherwise                    = Nothing
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

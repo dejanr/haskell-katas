@@ -5,6 +5,9 @@ import Test.QuickCheck
 import Control.Exception (evaluate)
 import Control.Monad.State
 
+main :: IO ()
+main = hspec spec
+
 type Stack = [Int]
 
 pop :: Stack -> (Int, Stack)
@@ -68,9 +71,6 @@ moreStack = do
     if a == 100
        then stackStuff
        else return ()
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

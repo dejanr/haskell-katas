@@ -2,9 +2,11 @@ module Katas.Monads.ReaderExampleSpec (spec) where
 
 import Test.Hspec
 import Test.QuickCheck
-
 -- https://blog.ssanj.net/posts/2014-09-23-A-Simple-Reader-Monad-Example.html
 import Control.Monad.Reader
+
+main :: IO ()
+main = hspec spec
 
 -- get the env from the Reader
 -- return the env and " This is Tom."
@@ -30,9 +32,6 @@ tomAndJerry = do
 -- entry function, call it with "Who is this?"
 runJerryRun :: String
 runJerryRun = runReader tomAndJerry "Who is this?"
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =

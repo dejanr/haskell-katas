@@ -7,6 +7,9 @@ import Data.List as List
 import Data.Monoid
 import Text.Printf
 
+main :: IO ()
+main = hspec spec
+
 -- ideas from here: https://haskell-lang.org/library/containers
 
 data SSN = SSN
@@ -75,9 +78,6 @@ employeeNames es =
     intercalate " - " $
     fmap (\p -> firstName p ++ " " ++ lastName p) $
     Map.elems es
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec = describe "Maps and Sets" $ do

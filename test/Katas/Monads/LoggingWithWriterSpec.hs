@@ -5,6 +5,9 @@ import Test.QuickCheck
 import Control.Monad.Writer
 import Data.Monoid
 
+main :: IO ()
+main = hspec spec
+
 -- Greatest common deviser
 gcd' :: Int -> Int -> Int
 gcd' a b
@@ -41,9 +44,6 @@ gcdWithDiffList a b
         result <- gcdWithDiffList b (a `mod` b)
         tell (toDiffList [show a ++ " mod " ++ show b ++ " = " ++ show (a `mod` b)])
         return result
-
-main :: IO ()
-main = hspec spec
 
 spec :: Spec
 spec =
