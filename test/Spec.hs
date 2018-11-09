@@ -68,6 +68,7 @@ import qualified Katas.Exercises.PhoneNumberCleanerSpec
 import qualified Katas.Exercises.BalancedBinaryTreeSpec
 import qualified Katas.Exercises.SetNeighborsSpec
 import qualified Katas.Exercises.LongestZerosSpec
+import qualified Katas.Patterns.SynonymsSpec
 
 main :: IO ()
 main = hspec spec
@@ -142,3 +143,4 @@ spec = do
     describe "66 - Exercices - Balanced Binary Tree Check" Katas.Exercises.BalancedBinaryTreeSpec.spec
     describe "67 - Exercices - Set Neighbors' in a Matrix" Katas.Exercises.SetNeighborsSpec.spec
     describe "68 - Exercices - Longest Zeros" Katas.Exercises.LongestZerosSpec.spec
+    describe "69 - Patterns - Synonyms" Katas.Patterns.SynonymsSpec.spec
